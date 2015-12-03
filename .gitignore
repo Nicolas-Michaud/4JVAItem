@@ -1,2 +1,10 @@
 /4JVA/dist/
 /4JVA/build/
+nbproject/private/
+build/
+nbbuild/
+dist/
+nbdist/
+nbactions.xml
+.nb-gradle/
+*.properties
