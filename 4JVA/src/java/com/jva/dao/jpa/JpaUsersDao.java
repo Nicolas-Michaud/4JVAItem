@@ -5,25 +5,25 @@
  */
 package com.jva.dao.jpa;
 
-import com.jva.dao.UserDao;
-import com.jva.entity.User;
+import com.jva.dao.UsersDao;
+import com.jva.entity.Users;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 @Stateless
-public class JpaUserDao implements UserDao{
+public class JpaUsersDao implements UsersDao{
 
     @PersistenceContext
     private EntityManager em;
     
     @Override
-    public void AddUser(User user) {
+    public void AddUser(Users user) {
         em.persist(user);
     }
 
     @Override
-    public void UpdateUser(User olduser, User newUser) {
+    public void UpdateUser(Users olduser, Users newUser) {
         em.remove(olduser);
         em.persist(newUser);
     }

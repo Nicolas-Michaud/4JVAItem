@@ -2,12 +2,17 @@ package com.jva.entity;
 
 import java.io.Serializable;
 import java.sql.Blob;
+import javax.persistence.DiscriminatorColumn;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 
 @Entity
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name = "objects")
 public class Objects implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -19,13 +24,13 @@ public class Objects implements Serializable {
     private Float price;
     private String typeof;
     private Blob picture;
-    private User user;
+    private Users user;
 
-    public User getUser() {
+    public Users getUser() {
         return user;
     }
 
-    public void setUser(User user) {
+    public void setUser(Users user) {
         this.user = user;
     }
 
