@@ -9,10 +9,11 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-@DiscriminatorColumn(name = "objects")
 public class Objects implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -24,6 +25,8 @@ public class Objects implements Serializable {
     private Float price;
     private String typeof;
     private Blob picture;
+    
+    @ManyToOne @JoinColumn
     private Users user;
 
     public Users getUser() {
