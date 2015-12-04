@@ -29,12 +29,7 @@ public class IndexServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         int countUsers = userservice.CountUsers();
         
-        Object username = request.getSession().getAttribute("user");
-        if(username.toString() != "") {
-            request.setAttribute("username", username);
-        } else {
-            request.setAttribute("username", null);
-        }
+        
         
         request.setAttribute("countUsers", countUsers);
         request.getRequestDispatcher("/index.jsp").forward(request, response);

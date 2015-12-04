@@ -4,6 +4,8 @@
     Author     : nicolas
 --%>
 
+
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -12,12 +14,13 @@
         <title>Login</title>
     </head>
     <body>
-        <c:if test="${username != null}">
-            <p>Hello ${username}</p>
+        <c:if test="${not empty user}">
+            <p>Hello ${user}</p>
         </c:if>
         
         <a href="/4JVA/login"><input type="button" value="Login" name="Login"/></a>
         <a href="/4JVA/addUser"><input type="button" value="Add user" name="addUser"/></a>
+        <!--<a href="/4JVA/ad"><input type="button" value="Add object" name="addObject"/></a>-->
         <a href="/4JVA/logout"><input type="button" value="LogOut" name="lougout"/></a>
         
         <div>
