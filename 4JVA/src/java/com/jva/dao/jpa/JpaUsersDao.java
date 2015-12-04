@@ -7,6 +7,7 @@ package com.jva.dao.jpa;
 
 import com.jva.dao.UsersDao;
 import com.jva.entity.Users;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
@@ -52,6 +53,12 @@ public class JpaUsersDao implements UsersDao{
     public void UpdateUser(Users user) {
         em.remove(GetUserByUsername(user.getUsername()));
         em.persist(user);
+    }
+
+    @Override
+    public int CountUsers() {
+        List<Users> users = em.createQuery("SELECT u FROM Users u").getResultList();
+        return users.size();
     }
     
 }

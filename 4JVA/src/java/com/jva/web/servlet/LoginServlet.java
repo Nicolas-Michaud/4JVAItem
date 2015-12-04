@@ -5,8 +5,8 @@
  */
 package com.jva.web.servlet;
 
-import com.jva.dao.UsersDao;
 import com.jva.entity.Users;
+import com.jva.service.UserService;
 import java.io.IOException;
 import javax.ejb.EJB;
 import javax.servlet.ServletException;
@@ -15,15 +15,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/**
- *
- * @author nicolas
- */
 @WebServlet(name = "LoginServlet", urlPatterns = {"/login"})
 public class LoginServlet extends HttpServlet {
     
     @EJB
-    private UsersDao userdao;
+    private UserService userservice;
     
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -35,7 +31,7 @@ public class LoginServlet extends HttpServlet {
         String username = request.getParameter("username");
         String password = request.getParameter("password");
         
-        Users user = userdao.GetUser(username, password);
+        Users user = userservice.GetUser(username, password);
         
         if(user != null) {
             // cookies

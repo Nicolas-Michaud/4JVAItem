@@ -16,7 +16,7 @@ public class UserService {
     @EJB
     private UsersDao userdao;
     
-    public void addUser(Users user) {
+    public void AddUser(Users user) {
         userdao.AddUser(user);
     }
     
@@ -30,5 +30,9 @@ public class UserService {
     
     public Users GetUser(String username, String password) {
         return userdao.GetUser(username, password);
+    }
+    
+    public int CountUsers() {
+        return userdao.CountUsers();
     }
 }

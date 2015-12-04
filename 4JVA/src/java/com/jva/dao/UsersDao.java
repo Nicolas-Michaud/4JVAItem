@@ -5,8 +5,9 @@ import javax.ejb.Local;
 
 @Local
 public interface UsersDao {
-    void AddUser(Users user);    
-    void UpdateUser(Users user);
+    public void AddUser(Users user);    
+    public void UpdateUser(Users user);
     public Users GetUserByUsername(String username);
     public Users GetUser(String username, String password);
+    public int CountUsers();
 }
