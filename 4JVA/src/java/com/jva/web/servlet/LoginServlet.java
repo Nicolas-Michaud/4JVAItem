@@ -34,8 +34,8 @@ public class LoginServlet extends HttpServlet {
         Users user = userservice.GetUser(username, password);
         
         if(user != null) {
-            // cookies
-            //request.getSession().setAttribute("user", username);
+            //cookies
+            request.getSession().setAttribute("user", username);
             response.sendRedirect(getServletContext().getContextPath());
         }else {
             doGet(request, response);
