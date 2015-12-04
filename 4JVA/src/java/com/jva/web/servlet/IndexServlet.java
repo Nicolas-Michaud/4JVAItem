@@ -7,7 +7,6 @@ package com.jva.web.servlet;
 
 import com.jva.service.UserService;
 import java.io.IOException;
-import java.io.PrintWriter;
 import javax.ejb.EJB;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -28,8 +27,6 @@ public class IndexServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         int countUsers = userservice.CountUsers();
-        
-        
         
         request.setAttribute("countUsers", countUsers);
         request.getRequestDispatcher("/index.jsp").forward(request, response);

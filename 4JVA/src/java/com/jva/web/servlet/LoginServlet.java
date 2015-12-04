@@ -35,7 +35,7 @@ public class LoginServlet extends HttpServlet {
         
         if(user != null) {
             //cookies
-            request.getSession().setAttribute("user", username);
+            request.getSession().setAttribute("username", username);
             response.sendRedirect(getServletContext().getContextPath());
         }else {
             doGet(request, response);

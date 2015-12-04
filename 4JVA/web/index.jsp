@@ -14,12 +14,13 @@
         <title>Login</title>
     </head>
     <body>
-        <c:if test="${not empty user}">
-            <p>Hello ${user}</p>
+        <c:if test="${not empty username}">
+            <p>Hello ${username}</p>
         </c:if>
         
         <a href="/4JVA/login"><input type="button" value="Login" name="Login"/></a>
         <a href="/4JVA/addUser"><input type="button" value="Add user" name="addUser"/></a>
+         <a href="/4JVA/updateUser"><input type="button" value="Update user" name="updateUser"/></a>
         <!--<a href="/4JVA/ad"><input type="button" value="Add object" name="addObject"/></a>-->
         <a href="/4JVA/logout"><input type="button" value="LogOut" name="lougout"/></a>
         

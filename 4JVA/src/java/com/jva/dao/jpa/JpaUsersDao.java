@@ -20,15 +20,20 @@ public class JpaUsersDao implements UsersDao{
     @PersistenceContext
     private EntityManager em;
     
+    
     @Override
     public void AddUser(Users user) {
         em.persist(user);
     }
     
+    public void DeleteUser(Users user) {
+        em.remove(user);
+    }
+    
     @Override
     public Users GetUser(String username, String password) {     
         
-        Query query = em.createQuery("SELECT u FROM Users u WHERE u.firstname= :username AND u.password= :password");
+        Query query = em.createQuery("SELECT u FROM Users u WHERE u.username= :username AND u.password= :password");
         query.setParameter("username", username);        
         query.setParameter("password", password);
         
@@ -44,15 +49,33 @@ public class JpaUsersDao implements UsersDao{
     
     @Override
     public Users GetUserByUsername(String username) {
-        return (Users)em.createQuery("SELECT u FROM Users WHERE u.username LIKE :username")
-                .setParameter("username", username)
-                .getSingleResult();
+        Query query = em.createQuery("SELECT u FROM Users u WHERE u.username= :username")
+            .setParameter("username", username);
+            
+        try {
+            Users usr = (Users) query.getSingleResult();
+            return usr;
+            
+        } catch (NoResultException exeption) {
+            exeption.printStackTrace();
+            return null;
+        }
+        
     }
 
     @Override
     public void UpdateUser(Users user) {
-        em.remove(GetUserByUsername(user.getUsername()));
+        Users userbefore = GetUserByUsername(user.getUsername());
+        DeleteUser(userbefore);
         em.persist(user);
+        /*em.createQuery("UPDATE Users u SET u.firstname= :firstname, u.lastname= :lastname, u.email= :email, u.zipcode= :zipcode, u.password= :password WHERE u.username= :username")
+            .setParameter("firstname",user.getFirstname())
+            .setParameter("lastname",user.getLastname())
+            .setParameter("email",user.getEmail())
+            .setParameter("zipcode",user.getZipcode())
+            .setParameter("password",user.getPassword())
+            .setParameter("username",user.getUsername())
+            .executeUpdate();*/
     }
 
     @Override
