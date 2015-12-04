@@ -8,7 +8,6 @@ package com.jva.web.servlet;
 import com.jva.dao.UsersDao;
 import com.jva.entity.Users;
 import java.io.IOException;
-import java.io.PrintWriter;
 import javax.ejb.EJB;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -34,6 +33,7 @@ public class AddUser extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         Users user = new Users();
+        user.setUsername(request.getParameter("username"));
         user.setFirstname(request.getParameter("firstname"));
         user.setLastname(request.getParameter("lastname"));
         user.setEmail(request.getParameter("email"));

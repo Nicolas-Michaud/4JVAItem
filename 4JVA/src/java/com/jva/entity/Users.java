@@ -18,7 +18,6 @@ public class Users implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     
-    @Column(unique=true)
     private String username;
     
     private String firstname;

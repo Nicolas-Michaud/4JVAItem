@@ -15,15 +15,15 @@
         <form method="POST">
             <div>
                 <label for="username">Username : </label>
-                <input type="username" id="username" name="username" />
+                <input type="text" id="username" name="username" />
             </div>
             <div>
-                <label for="lastename">Lastname : </label>
-                <input type="lastename" id="lastename" name="lastename" />
+                <label for="lastname">Lastname : </label>
+                <input type="text" id="lastename" name="lastname" />
             </div>
             <div>
                 <label for="firstname">Firstname : </label>
-                <input type="firstname" id="firstname" name="firstname" />
+                <input type="text" id="firstname" name="firstname" />
             </div>
             <div>
                 <label for="password">Password : </label>
@@ -35,7 +35,7 @@
             </div>
             <div>
                 <label for="zipcode">Zip code : </label>
-                <input type="zipcode" id="lastename" name="zipcode" />
+                <input type="text" id="lastename" name="zipcode" />
             </div>
             <div>
                 <input type="submit" value="Register" />
