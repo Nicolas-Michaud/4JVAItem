@@ -20,12 +20,18 @@
         
         <a href="/4JVA/login"><input type="button" value="Login" name="Login"/></a>
         <a href="/4JVA/addUser"><input type="button" value="Add user" name="addUser"/></a>
-         <a href="/4JVA/updateUser"><input type="button" value="Update user" name="updateUser"/></a>
-        <!--<a href="/4JVA/ad"><input type="button" value="Add object" name="addObject"/></a>-->
-        <a href="/4JVA/logout"><input type="button" value="LogOut" name="lougout"/></a>
+        <a href="/4JVA/updateUser"><input type="button" value="Update user" name="updateUser"/></a>
+        <a href="/4JVA/addObject"><input type="button" value="Add object" name="addObject"/></a>
+        <a href="/4JVA/logout"><input type="button" value="Log Out" name="logout"/></a>
+        <a href="/4JVA/listObjects"><input type="button" value="List Objects" name="listObjects"/></a>
+
+        
         
         <div>
-            <label>Number of Users : ${countUsers}</label>
+            Number of Users : ${countUsers}
+            <br/>
+            Number of Objects : ${countObjects}
+        </div>
         </div>
     </body>
 </html>

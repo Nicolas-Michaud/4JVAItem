@@ -35,7 +35,7 @@
             </div>
             <div>
                 <label for="zipcode">Zip code : </label>
-                <input type="text" id="lastename" name="zipcode" />
+                <input type="number" id="zipcode" name="zipcode" />
             </div>
             <div>
                 <input type="submit" value="Register" />

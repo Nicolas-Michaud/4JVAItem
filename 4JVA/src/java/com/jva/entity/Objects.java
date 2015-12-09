@@ -1,8 +1,7 @@
 package com.jva.entity;
 
+import java.io.File;
 import java.io.Serializable;
-import java.sql.Blob;
-import javax.persistence.DiscriminatorColumn;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -22,9 +21,17 @@ public class Objects implements Serializable {
     private Long id;
     private String title;
     private String description;
-    private Float price;
+    private int price;
     private String typeof;
-    private Blob picture;
+    private String picture;
+
+    public String getPicture() {
+        return picture;
+    }
+
+    public void setPicture(String picture) {
+        this.picture = picture;
+    }
     
     @ManyToOne @JoinColumn
     private Users user;
@@ -53,11 +60,11 @@ public class Objects implements Serializable {
         this.description = description;
     }
 
-    public Float getPrice() {
+    public int getPrice() {
         return price;
     }
 
-    public void setPrice(Float price) {
+    public void setPrice(int price) {
         this.price = price;
     }
 
@@ -67,16 +74,7 @@ public class Objects implements Serializable {
 
     public void setTypeof(String typeof) {
         this.typeof = typeof;
-    }
-
-    public Blob getPicture() {
-        return picture;
-    }
-
-    public void setPicture(Blob picture) {
-        this.picture = picture;
-    }
-    
+    }    
 
     public Long getId() {
         return id;

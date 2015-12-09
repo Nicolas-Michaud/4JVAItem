@@ -7,6 +7,7 @@ package com.jva.service;
 
 import com.jva.dao.ObjectsDao;
 import com.jva.entity.Objects;
+import java.util.List;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
 
@@ -15,7 +16,7 @@ public class ObjectService {
     @EJB
     private ObjectsDao objectsdao;
     
-    public void addUser(Objects objects) {
+    public void AddObjects(Objects objects) {
        objectsdao.AddObjects(objects);
     }
     
@@ -27,7 +28,15 @@ public class ObjectService {
         return objectsdao.GetObjectsByTitle(title);
     }
     
-    public Objects GetUser() {
+    public Objects GetObjects() {
         return objectsdao.GetObjects();
+    }
+    
+    public int CountObjects() {
+        return objectsdao.CountObjects();
+    }
+    
+    public List<Objects> ListObjects () {
+        return objectsdao.ListObjects();
     }
 }

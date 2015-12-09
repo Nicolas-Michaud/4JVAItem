@@ -3,6 +3,7 @@ package com.jva.dao.jpa;
 import com.jva.dao.ObjectsDao;
 import com.jva.entity.Objects;
 import com.jva.entity.Users;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
@@ -47,5 +48,16 @@ public class JpaObjectsDao implements ObjectsDao{
     public void UpdateObjects(Objects objects) {
         em.remove(GetObjectsByTitle(objects.getTitle()));
         em.persist(objects);
+    }
+    
+    @Override
+    public List<Objects> ListObjects () {
+        return em.createQuery("SELECT u FROM Objects u").getResultList();
+    }
+    
+    @Override
+    public int CountObjects() {
+        List<Objects> obj = em.createQuery("SELECT u FROM Objects u").getResultList();
+        return obj.size();
     }
 }

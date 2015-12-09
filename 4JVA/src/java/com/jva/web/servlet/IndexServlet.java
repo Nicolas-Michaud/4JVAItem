@@ -5,6 +5,7 @@
  */
 package com.jva.web.servlet;
 
+import com.jva.service.ObjectService;
 import com.jva.service.UserService;
 import java.io.IOException;
 import javax.ejb.EJB;
@@ -24,11 +25,17 @@ public class IndexServlet extends HttpServlet {
     @EJB
     private UserService userservice;
     
+    @EJB
+    private ObjectService objectservice;
+    
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         int countUsers = userservice.CountUsers();
+        int countObjects = objectservice.CountObjects();
         
         request.setAttribute("countUsers", countUsers);
+        request.setAttribute("countObjects", countObjects);
+
         request.getRequestDispatcher("/index.jsp").forward(request, response);
     }
 
