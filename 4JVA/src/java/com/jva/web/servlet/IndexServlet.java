@@ -5,9 +5,11 @@
  */
 package com.jva.web.servlet;
 
-import com.jva.service.ObjectService;
+import com.jva.entity.Item;
+import com.jva.service.ItemService;
 import com.jva.service.UserService;
 import java.io.IOException;
+import java.util.List;
 import javax.ejb.EJB;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -19,24 +21,26 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author nicolas
  */
-@WebServlet(name = "IndexServlet", urlPatterns = {"/"})
+@WebServlet(name = "IndexServlet", urlPatterns = {"/index"})
 public class IndexServlet extends HttpServlet {
 
     @EJB
     private UserService userservice;
     
     @EJB
-    private ObjectService objectservice;
+    private ItemService itemservice;
     
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        int countUsers = userservice.CountUsers();
-        int countObjects = objectservice.CountObjects();
+        Long countUsers = userservice.CountUsers();
+        Long countObjects = itemservice.CountItems();
+        List<Item> listItems = itemservice.ListItems();
         
+        request.setAttribute("listItems", listItems);
         request.setAttribute("countUsers", countUsers);
         request.setAttribute("countObjects", countObjects);
 
-        request.getRequestDispatcher("/index.jsp").forward(request, response);
+        request.getRequestDispatcher("jsp/index.jsp").forward(request, response);
     }
 
     @Override

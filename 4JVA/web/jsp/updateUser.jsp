@@ -1,45 +1,38 @@
-<%-- 
-    Document   : addUser
-    Created on : 3 déc. 2015, 16:10:12
-    Author     : nicolas
---%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<c:if test="${not empty username}">
+    <%@include file="template/user/head.jsp" %>
+</c:if>
+<c:if test="${empty username}">
+    <%@include file="template/head.jsp" %>
+</c:if>
 
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Bartering - Add User</title>
-    </head>
-    <body>
-        <form method="POST">
-            <div>
-                <label for="username">Username : </label>
-                <input type="text" id="username" name="username" value="${user.username}" disabled="true" />
-            </div>
-            <div>
-                <label for="lastname">Lastname : </label>
-                <input type="text" id="lastename" name="lastname" value="${user.lastname}" />
-            </div>
-            <div>
-                <label for="firstname">Firstname : </label>
-                <input type="text" id="firstname" name="firstname" value="${user.firstname}" />
-            </div>
-            <div>
-                <label for="password">Password : </label>
-                <input type="password" id="password" name="password" value="${user.password}" />
-            </div>
-            <div>
-                <label for="email">Email : </label>
-                <input type="email" id="email" name="email" value="${user.email}"/>
-            </div>
-            <div>
-                <label for="zipcode">Zip code : </label>
-                <input type="text" id="zipcode" name="zipcode" value="${user.zipcode}"/>
-            </div>
-            <div>
-                <input type="submit" value="Update" />
-            </div>
-        </form>
-    </body>
+<div class="container">
+    <div class="row">
+        <div class="col-mg-4 form-div">
+            <form method="POST">
+                <div class="form-group">
+                    <input type="text" class="form-control" id="username" name="username" value="${user.username}" disabled="true" />
+                    <input type="text" class="form-control" id="lastename" name="lastname" value="${user.lastname}" />
+                    <input type="text" class="form-control" id="firstname" name="firstname" value="${user.firstname}" />
+                    <input type="password" class="form-control" id="password" name="password" value="${user.password}" />
+                    <input type="email" class="form-control" id="email" name="email" value="${user.email}"/>
+                    <input type="number" class="form-control" id="zipcode" name="zipcode" value="${user.zipcode}"/>
+                </div>
+
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary submit-btn">Update</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<c:if test="${not empty username}">
+<%@include file="template/user/scripts.jsp" %>
+</c:if>
+<c:if test="${empty username}">
+    <%@include file="template/scripts.jsp" %>
+</c:if>
+</body>
 </html>

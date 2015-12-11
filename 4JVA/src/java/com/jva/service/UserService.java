@@ -5,8 +5,8 @@
  */
 package com.jva.service;
 
-import com.jva.dao.UsersDao;
-import com.jva.entity.Users;
+import com.jva.dao.UserDao;
+import com.jva.entity.User;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
 
@@ -14,25 +14,25 @@ import javax.ejb.Stateless;
 public class UserService {
     
     @EJB
-    private UsersDao userdao;
+    private UserDao userdao;
     
-    public void AddUser(Users user) {
+    public void AddUser(User user) {
         userdao.AddUser(user);
     }
     
-    public void UpdateUser(Users user) {
+    public void UpdateUser(User user) {
         userdao.UpdateUser(user);
     }
     
-    public Users GetUserByUsername(String username) {
+    public User GetUserByUsername(String username) {
         return userdao.GetUserByUsername(username);
     }
     
-    public Users GetUser(String username, String password) {
+    public User GetUser(String username, String password) {
         return userdao.GetUser(username, password);
     }
     
-    public int CountUsers() {
+    public Long CountUsers() {
         return userdao.CountUsers();
     }
 }

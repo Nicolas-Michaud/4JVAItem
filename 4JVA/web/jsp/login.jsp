@@ -1,29 +1,24 @@
-<%-- 
-    Document   : login
-    Created on : 3 déc. 2015, 16:41:29
-    Author     : nicolas
---%>
+<%@include file="template/head.jsp" %>
+<title>Bartering - Login page</title>
 
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Login</title>
-    </head>
-    <body>
-        <form method="POST">
-            <div>
-                <label for="username">Username:</label>
-                <input type="text" id="username" name="username" />
-            </div>
-            <div>
-                <label for="password">Password:</label>
-                <input type="password" id="password" name="password" />
-            </div>
-            <div>
-                <input type="submit" value="Submit" />
-            </div>
-        </form>
-    </body>
+<div class="container">
+    <div class="row">
+        <div class="col-mg-4 form-div">
+            <h1>Login</h1>
+            <form method="POST">
+                <div class="form-group">
+                    <input type="text" class="form-control" name="username" id="username" placeholder="Username">
+                    <input type="password" class="form-control" name="password" id="password" placeholder="Password">
+                </div>
+
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary submit-btn">Login</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<%@include file="template/scripts.jsp" %>
+</body>
 </html>

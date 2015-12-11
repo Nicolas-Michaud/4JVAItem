@@ -1,45 +1,27 @@
-<%-- 
-    Document   : addUser
-    Created on : 3 déc. 2015, 16:10:12
-    Author     : nicolas
---%>
+<%@include file="template/head.jsp" %>
 
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Bartering - Add User</title>
-    </head>
-    <body>
-        <form method="POST">
-            <div>
-                <label for="username">Username : </label>
-                <input type="text" id="username" name="username" />
-            </div>
-            <div>
-                <label for="lastname">Lastname : </label>
-                <input type="text" id="lastename" name="lastname" />
-            </div>
-            <div>
-                <label for="firstname">Firstname : </label>
-                <input type="text" id="firstname" name="firstname" />
-            </div>
-            <div>
-                <label for="password">Password : </label>
-                <input type="password" id="password" name="password" />
-            </div>
-            <div>
-                <label for="email">Email : </label>
-                <input type="email" id="email" name="email" />
-            </div>
-            <div>
-                <label for="zipcode">Zip code : </label>
-                <input type="number" id="zipcode" name="zipcode" />
-            </div>
-            <div>
-                <input type="submit" value="Register" />
-            </div>
-        </form>
-    </body>
+<div class="container">
+    <div class="row">
+        <div class="col-mg-4 form-div">
+            <form method="POST">
+                <div class="form-group">
+                    <input type="text" class="form-control" name="username" id="username" placeholder="Username">
+                    <input type="text" class="form-control" name="lastname" id="lastname" placeholder="Lastname">
+                    <input type="text" class="form-control" name="firstname" id="firstname" placeholder="Firstname">
+                    <input type="password" class="form-control" name="password" id="password" placeholder="Password">
+                    <input type="email" class="form-control" name="email" id="email" placeholder="Email">
+                    <input type="number" class="form-control" name="zipcode" id="zipcode" placeholder="Zip code">
+                </div>
+
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary submit-btn">Register</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<%@include file="template/scripts.jsp" %>
+</body>
 </html>
