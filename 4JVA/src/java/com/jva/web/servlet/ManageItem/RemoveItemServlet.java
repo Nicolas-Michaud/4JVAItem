@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.jva.web.servlet.ManageItem;
 
 import com.jva.dao.ItemDao;
@@ -16,12 +11,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/**
- *
- * @author nicolas
- */
-@WebServlet(name = "RemoveObject", urlPatterns = {"/user/object/remove"})
-public class RemoveObjectServlet extends HttpServlet {
+@WebServlet(name = "RemoveItem", urlPatterns = {"/user/item/remove"})
+public class RemoveItemServlet extends HttpServlet {
 
     @EJB
     ItemService objservice;
@@ -38,7 +29,7 @@ public class RemoveObjectServlet extends HttpServlet {
         Item obj = objservice.GetItemByTitle(title);
         objectsdao.DeleteItem(obj);
         
-        response.sendRedirect(getServletContext().getContextPath() + "/listObjects");
+        response.sendRedirect(getServletContext().getContextPath() + "/index");
     }
 
     @Override

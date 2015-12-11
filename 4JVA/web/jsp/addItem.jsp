@@ -15,7 +15,7 @@
                     <textarea class="form-control" name="description" placeholder="Description"></textarea>
                     <input type="text" class="form-control" name="typeof" placeholder="Type of">
                     <input type="number" class="form-control" name="price" placeholder="Price">
-                    <input type="file" class="form-control" name="filechooser">
+                    <input type="file" class="form-control" name="fileChooser">
                 </div>
 
                 <div class="form-group">

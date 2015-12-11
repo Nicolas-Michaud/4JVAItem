@@ -30,11 +30,11 @@
                             <p class="description">${obj.description}</p>
 
                             
-                            <c:url value="../4JVA/user/object/remove" var="deleteObjectUrl">
-                                <c:param name="title" value="${obj.title}"/>
+                            <c:url value="/user/item/remove" var="deleteItem">
+                                <c:param name="id" value="${obj.id}"/>
                             </c:url>
                             
-                            <a href="${deleteObjectUrl}">Delete</a>
+                            <a href="${deleteItem}">Delete</a>
                         </div>
                     </c:forEach>
                     

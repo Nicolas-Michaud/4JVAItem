@@ -25,7 +25,7 @@ public class JpaItemDao implements ItemDao{
     @Override
     public Item GetItemByTitle(String title) {     
         
-        Query query = em.createQuery("SELECT u FROM Objects u WHERE u.title = :title");
+        Query query = em.createQuery("SELECT u FROM Item u WHERE u.title = :title");
         query.setParameter("title", title);        
 
         
@@ -67,8 +67,6 @@ public class JpaItemDao implements ItemDao{
     
     @Override
     public void DeleteItem(Item item) {
-        Query query = em.createQuery("DELETE FROM Item u WHERE u.id = :id");
-        query.setParameter("id", item.getId());   
-        query.executeUpdate();
+        em.remove(item);
     }
 }

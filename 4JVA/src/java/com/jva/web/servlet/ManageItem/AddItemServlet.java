@@ -4,8 +4,6 @@ import com.jva.entity.Item;
 import com.jva.entity.User;
 import com.jva.service.ItemService;
 import com.jva.service.UserService;
-import java.io.BufferedOutputStream;
-import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;

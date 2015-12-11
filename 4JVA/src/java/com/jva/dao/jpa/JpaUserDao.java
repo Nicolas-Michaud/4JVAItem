@@ -9,9 +9,9 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.CriteriaUpdate;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 
@@ -68,8 +68,16 @@ public class JpaUserDao implements UserDao{
 
     @Override
     public void UpdateUser(User user) {
-        DeleteUser(GetUserByUsername(user.getUsername()));
-        em.persist(user);
+        Query query = em.createQuery("UPDATE User u SET u.firstname = :firstname, u.lastname = :lastname,"
+                + " u.password = :password, u.email = :email, u.zipcode = :zipcode WHERE u.username = :username");
+        query.setParameter("username", user.getUsername()); 
+        query.setParameter("firstname", user.getFirstname());  
+        query.setParameter("password", user.getPassword()); 
+        query.setParameter("lastname", user.getLastname());   
+        query.setParameter("email", user.getEmail());   
+        query.setParameter("zipcode", user.getZipcode());  
+
+        query.executeUpdate();
     }
 
     @Override

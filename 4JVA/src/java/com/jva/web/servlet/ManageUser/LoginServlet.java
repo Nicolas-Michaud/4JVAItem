@@ -1,7 +1,6 @@
 package com.jva.web.servlet.ManageUser;
 
 import com.jva.entity.User;
-import com.jva.service.ItemService;
 import com.jva.service.UserService;
 import java.io.IOException;
 import javax.ejb.EJB;
