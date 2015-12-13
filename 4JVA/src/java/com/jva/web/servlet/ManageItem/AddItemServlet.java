@@ -8,6 +8,7 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.nio.file.Files;
 import javax.ejb.EJB;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
@@ -43,7 +44,15 @@ public class AddItemServlet extends HttpServlet {
         Part filePart = request.getPart("fileChooser");
         String fileName = filePart.getSubmittedFileName();
         obj.setPicture(fileName);
-        setImg(fileName,filePart, request);
+        
+        String path = getServletContext().getInitParameter("upload.location");
+        File directory = new File(getServletContext().getRealPath(path));
+        
+        File file = new File(directory, fileName);
+        
+        try (InputStream input = filePart.getInputStream()) {
+            Files.copy(input, file.toPath());
+        }
         
         User user = userservice.GetUserByUsername(request.getSession().getAttribute("username").toString());
         obj.setUser(user);
@@ -51,27 +60,5 @@ public class AddItemServlet extends HttpServlet {
         objectservice.AddItem(obj);
         
         response.sendRedirect(request.getContextPath() + "/index");
-    }
-    
-    private void setImg(String img, Part part, HttpServletRequest request) throws IOException {
-        try {
-            File uploads = new File(request.getServletContext().getContextPath() + File.separator + "web/images");
-            if(!uploads.exists()){uploads.mkdir();}
-            File savedFile = new File(uploads.getAbsolutePath() + File.separator + img);
-            if(!savedFile.exists()){savedFile.createNewFile();}
-            FileOutputStream fos = new FileOutputStream(savedFile);
-
-            InputStream ips = part.getInputStream();
-            int x = 0;
-            byte[] b = new byte[1024];
-            while((x = ips.read(b)) != -1) {
-                fos.write(b,0,x);
-            }
-            fos.flush();
-            fos.close();
-        }catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-    
+    }    
 }

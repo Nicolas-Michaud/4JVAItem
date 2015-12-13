@@ -9,7 +9,6 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
-import javax.persistence.Query;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
@@ -68,16 +67,7 @@ public class JpaUserDao implements UserDao{
 
     @Override
     public void UpdateUser(User user) {
-        Query query = em.createQuery("UPDATE User u SET u.firstname = :firstname, u.lastname = :lastname,"
-                + " u.password = :password, u.email = :email, u.zipcode = :zipcode WHERE u.username = :username");
-        query.setParameter("username", user.getUsername()); 
-        query.setParameter("firstname", user.getFirstname());  
-        query.setParameter("password", user.getPassword()); 
-        query.setParameter("lastname", user.getLastname());   
-        query.setParameter("email", user.getEmail());   
-        query.setParameter("zipcode", user.getZipcode());  
-
-        query.executeUpdate();
+        em.merge(user);
     }
 
     @Override
@@ -87,12 +77,5 @@ public class JpaUserDao implements UserDao{
         cq.select(qb.count(cq.from(User.class)));
         
         return em.createQuery(cq).getSingleResult();
-    }
-    /*
-    @Override
-    public int CountUsers() {
-        List<Users> users = em.createQuery("SELECT u FROM Users u").getResultList();
-        return users.size();
-    }*/
-    
+    }    
 }

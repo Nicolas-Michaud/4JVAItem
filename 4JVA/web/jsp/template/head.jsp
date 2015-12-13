@@ -9,4 +9,4 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <%@include file="navbar.jsp" %>
+    <%@include file="navbar.jsp" %>
